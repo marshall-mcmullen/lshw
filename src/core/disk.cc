@@ -69,11 +69,13 @@ bool scan_disk(hwNode & n)
 
   close(fd);
 
+#if 0 // Disabling scan_partitions b/c scanning raw partitions can cause it to hang
   if(n.getSize()>=0)
   {
     n.addHint("icon", string("disc"));
     scan_partitions(n);
   }
+#endif
 
   return true;
 }
